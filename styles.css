@@ -240,7 +240,7 @@ li::before {
 
     /* Навигация */
     .controls {
-        bottom: 20px;
+        bottom: 35px;
         right: 20px;
         gap: 10px;
     }
@@ -253,7 +253,7 @@ li::before {
 
     /* Счётчик слайдов */
     .progress {
-        bottom: 30px;
+        bottom: 45px;
         left: 20px;
         font-size: 0.85rem;
     }
@@ -298,7 +298,7 @@ li::before {
 
     /* Навигация */
     .controls {
-        bottom: 15px;
+        bottom: 30px;
         right: 15px;
         gap: 8px;
     }
@@ -311,7 +311,7 @@ li::before {
 
     /* Счётчик слайдов */
     .progress {
-        bottom: 25px;
+        bottom: 40px;
         left: 15px;
         font-size: 0.75rem;
     }
@@ -343,7 +343,7 @@ li::before {
     }
 
     .controls {
-        bottom: 10px;
+        bottom: 25px;
         right: 10px;
     }
 
@@ -354,7 +354,7 @@ li::before {
     }
 
     .progress {
-        bottom: 15px;
+        bottom: 30px;
         left: 10px;
         font-size: 0.7rem;
     }
