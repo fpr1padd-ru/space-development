@@ -1,0 +1,361 @@
+/* Общие стили и сброс */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #0a0a0c;
+    color: #e2e8f0;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Контейнер презентации */
+.presentation-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Слайды */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Фоновое изображение для слайда */
+.slide-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.25;
+    z-index: 1;
+    filter: grayscale(30%) brightness(70%);
+}
+
+/* Контент слайда */
+.slide-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    width: 100%;
+    text-align: left;
+    background: rgba(15, 15, 20, 0.7);
+    padding: 50px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    transform: translateY(20px);
+    transition: transform 0.8s ease;
+}
+
+.slide.active .slide-content {
+    transform: translateY(0);
+}
+
+/* Типографика */
+.slide-author {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #38bdf8;
+    margin-bottom: 15px;
+}
+
+h1, h2 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 25px;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; }
+
+p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    margin-top: 15px;
+}
+
+li {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 25px;
+}
+
+li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: #38bdf8;
+}
+
+/* Навигация (Кнопки) */
+.controls {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    z-index: 10;
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: #ffffff;
+    color: #0a0a0c;
+    border-color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Счётчик слайдов */
+.progress {
+    position: absolute;
+    bottom: 60px;
+    left: 40px;
+    z-index: 10;
+    font-size: 1rem;
+    font-family: monospace;
+    color: #64748b;
+    letter-spacing: 1px;
+}
+
+.progress span {
+    color: #ffffff;
+}
+
+/* ========================================
+   АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ
+   ======================================== */
+
+/* Планшеты и небольшие экраны */
+@media screen and (max-width: 1024px) {
+    .slide {
+        padding: 30px;
+    }
+
+    .slide-content {
+        padding: 40px;
+        max-width: 100%;
+    }
+
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2rem; }
+
+    p {
+        font-size: 1.05rem;
+    }
+
+    li {
+        font-size: 1rem;
+    }
+}
+
+/* Мобильные устройства */
+@media screen and (max-width: 768px) {
+    .slide {
+        padding: 20px;
+    }
+
+    .slide-content {
+        padding: 30px 25px;
+        border-radius: 8px;
+    }
+
+    .slide-author {
+        font-size: 0.75rem;
+        letter-spacing: 1.5px;
+        margin-bottom: 10px;
+    }
+
+    h1 { 
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+    
+    h2 { 
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    ul {
+        margin-top: 10px;
+    }
+
+    li {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        padding-left: 20px;
+    }
+
+    /* Навигация */
+    .controls {
+        bottom: 20px;
+        right: 20px;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
+
+    /* Счётчик слайдов */
+    .progress {
+        bottom: 30px;
+        left: 20px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Очень маленькие экраны */
+@media screen and (max-width: 480px) {
+    .slide {
+        padding: 15px;
+    }
+
+    .slide-content {
+        padding: 25px 20px;
+    }
+
+    .slide-author {
+        font-size: 0.7rem;
+        margin-bottom: 8px;
+    }
+
+    h1 { 
+        font-size: 1.6rem;
+        margin-bottom: 12px;
+    }
+    
+    h2 { 
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+    }
+
+    p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        margin-bottom: 12px;
+    }
+
+    li {
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+        padding-left: 18px;
+    }
+
+    /* Навигация */
+    .controls {
+        bottom: 15px;
+        right: 15px;
+        gap: 8px;
+    }
+
+    .btn {
+        width: 45px;
+        height: 45px;
+        font-size: 0.9rem;
+    }
+
+    /* Счётчик слайдов */
+    .progress {
+        bottom: 25px;
+        left: 15px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Ландшафтная ориентация на мобильных */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .slide {
+        padding: 15px;
+    }
+
+    .slide-content {
+        padding: 20px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.4rem; }
+
+    p {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+    }
+
+    li {
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+    }
+
+    .controls {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .btn {
+        width: 40px;
+        height: 40px;
+        font-size: 0.85rem;
+    }
+
+    .progress {
+        bottom: 15px;
+        left: 10px;
+        font-size: 0.7rem;
+    }
+}
