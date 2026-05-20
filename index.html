@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Развитие космоса — Презентация</title>
+    <style>
+        /* Общие стили и сброс */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #0a0a0c;
+            color: #e2e8f0;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Контейнер презентации */
+        .presentation-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* Слайды */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease-in-out, visibility 0.8s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Фоновое изображение для слайда */
+        .slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.25;
+            z-index: 1;
+            filter: grayscale(30%) brightness(70%);
+        }
+
+        /* Контент слайда */
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            width: 100%;
+            text-align: left;
+            background: rgba(15, 15, 20, 0.7);
+            padding: 50px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            transform: translateY(20px);
+            transition: transform 0.8s ease;
+        }
+
+        .slide.active .slide-content {
+            transform: translateY(0);
+        }
+
+        /* Типографика */
+        .slide-author {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #38bdf8;
+            margin-bottom: 15px;
+        }
+
+        h1, h2 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+
+        p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        li {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #38bdf8;
+        }
+
+        /* Навигация (Кнопки) */
+        .controls {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            z-index: 10;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #ffffff;
+            color: #0a0a0c;
+            border-color: #ffffff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Счётчик слайдов */
+        .progress {
+            position: absolute;
+            bottom: 60px;
+            left: 40px;
+            z-index: 10;
+            font-size: 1rem;
+            font-family: monospace;
+            color: #64748b;
+            letter-spacing: 1px;
+        }
+
+        .progress span {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="presentation-container">
+        
+        <!-- Слайд 1: Титульный -->
+        <div class="slide active">
+            <img src="slide1.jpg" alt="Космос" class="slide-bg">
+            <div class="slide-content">
+                <div class="slide-author">Презентация</div>
+                <h1>Развитие космоса</h1>
+                <p>Эволюция технологий, идей и стремлений человечества за пределы земной атмосферы.</p>
+                <div style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+                    <p style="font-size: 1rem; margin-bottom: 5px;">Выполнил ученик 9В класса</p>
+                    <strong style="color: #ffffff; font-size: 1.2rem;">Костюк Иван Андреевич</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 2: Начало пути -->
+        <div class="slide">
+            <img src="slide2.jpg" alt="Запуск ракеты" class="slide-bg">
+            <div class="slide-content">
+                <h2>01. Технический прорыв</h2>
+                <p>Развитие космоса началось с теоретических расчетов Константина Циолковского и инженерного гения Сергея Королева. Переход от фантазий к реальным полетам произошел в середине XX века.</p>
+                <ul>
+                    <li><strong>1957 год:</strong> Запуск первого искусственного спутника Земли. Начало космической эры.</li>
+                    <li><strong>1961 год:</strong> Первый полет человека в космос. Юрий Гагарин доказал, что человек может работать на орбите.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Слайд 3: Автоматические станции -->
+        <div class="slide">
+            <img src="slide3.jpg" alt="Марсоход или зонд" class="slide-bg">
+            <div class="slide-content">
+                <h2>02. Роботизированные исследователи</h2>
+                <p>Важнейший этап развития — отправка аппаратов туда, где человек пока не может выжить. Автоматические межпланетные станции стали нашими "глазами" в глубоком космосе.</p>
+                <ul>
+                    <li>Изучение Луны, Марса и Венеры с помощью посадочных модулей.</li>
+                    <li>Миссии «Вояджер», вышедшие за пределы Гелиосферы.</li>
+                    <li>Телескопы «Хаббл» и «Джеймс Уэбб», заглянувшие вглубь Вселенной на миллиарды лет назад.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Слайд 4: Орбитальные комплексы -->
+        <div class="slide">
+            <img src="slide4.jpg" alt="МКС" class="slide-bg">
+            <div class="slide-content">
+                <h2>03. Жизнь на орбите</h2>
+                <p>Развитие космических станций превратило кратковременные полеты в постоянное присутствие человечества в космосе. Станции «Салют», «Мир», а теперь и МКС стали международными лабораториями.</p>
+                <p>Здесь изучается влияние невесомости на организм, выращиваются кристаллы и тестируются технологии замкнутого жизнеобеспечения для будущих дальних перелетов.</p>
+            </div>
+        </div>
+
+        <!-- Слайд 5: Новая эра и частный космос -->
+        <div class="slide">
+            <img src="slide5.jpg" alt="Современная ракета" class="slide-bg">
+            <div class="slide-content">
+                <h2>04. Коммерциализация и многоразовость</h2>
+                <p>Современный этап развития космоса характеризуется приходом частных компаний и кардинальным удешевлением полетов.</p>
+                <ul>
+                    <li>Внедрение многоразовых ступеней ракет значительно снизило стоимость вывода грузов.</li>
+                    <li>Развитие глобальных спутниковых сетей для высокоскоростного интернета по всей планете.</li>
+                    <li>Активная подготовка к возвращению на Луну (программа Artemis) и проектирование марсианских кораблей.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Слайд 6: Заключение -->
+        <div class="slide">
+            <img src="slide6.jpg" alt="Земля из космоса" class="slide-bg">
+            <div class="slide-content">
+                <h2>Будущее за развитием</h2>
+                <p>Развитие космоса — это не просто престиж или чистая наука. Это поиск ответов на фундаментальные вопросы, создание новых материалов на орбите и обеспечение долгосрочного выживания человечества.</p>
+                <p style="color: #38bdf8; font-style: italic; margin-top: 30px;">«Земля — колыбель человечества, но нельзя вечно жить в колыбели». — К. Э. Циолковский</p>
+            </div>
+        </div>
+
+        <!-- Интерфейс управления -->
+        <div class="progress">Слайд: <span id="current-slide">1</span> / <span id="total-slides">6</span></div>
+
+        <div class="controls">
+            <button class="btn" id="prev-btn" aria-label="Предыдущий слайд">&#8592;</button>
+            <button class="btn" id="next-btn" aria-label="Следующий слайд">&#8594;</button>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const currentSlideElement = document.getElementById('current-slide');
+            const totalSlidesElement = document.getElementById('total-slides');
+            
+            let currentIdx = 0;
+            const totalSlides = slides.length;
+            
+            // Инициализация счетчика
+            totalSlidesElement.textContent = totalSlides;
+
+            function updateSlides() {
+                slides.forEach((slide, idx) => {
+                    if (idx === currentIdx) {
+                        slide.classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                });
+                currentSlideElement.textContent = currentIdx + 1;
+            }
+
+            function nextSlide() {
+                currentIdx = (currentIdx + 1) % totalSlides;
+                updateSlides();
+            }
+
+            function prevSlide() {
+                currentIdx = (currentIdx - 1 + totalSlides) % totalSlides;
+                updateSlides();
+            }
+
+            // Обработчики кликов
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            // Управление с клавиатуры (стрелки влево/вправо и пробел)
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' || e.key === ' ') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
